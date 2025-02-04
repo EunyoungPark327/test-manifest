@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker
+  namespace: default
+  labels:
+    app: worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: worker
+  template:
+    metadata:
+      labels:
+        app: worker
+      annotations:
+        aws-samples.github.com/aws-pod-eip-controller-type: auto
+    spec:
+      serviceAccountName: worker-sa
+      containers:
+        - name: worker
+          image: 586448081647.dkr.ecr.ap-northeast-2.amazonaws.com/com-apne2-ec2-worker-ecr-pt:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: "1"
+              memory: "3Gi"
+            limits:
+              cpu: "1"
+              memory: "3Gi"
