@@ -15,8 +15,7 @@ spec:
       labels:
         app: worker
       annotations:
-        aws-samples.github.com/aws-pod-eip-controller-type: auto
-        aws-samples.github.com/aws-pod-eip-controller-public-ipv4-pool: amazon-staticbgp
+        k8s.amazonaws.com/eniConfig: "public"
     spec:
       serviceAccountName: worker-sa
       containers:
