@@ -4,7 +4,7 @@ metadata:
   name: worker-service
   namespace: default
   annotations:
-    alb.ingress.kubernetes.io/healthcheck-path: "/"
+    alb.ingress.kubernetes.io/healthcheck-path: "/reflect"
     alb.ingress.kubernetes.io/healthcheck-port: "traffic-port"
 spec:
   selector:
