@@ -4,7 +4,8 @@ metadata:
   name: worker-service
   namespace: default
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: "external"
+    alb.ingress.kubernetes.io/healthcheck-path: "/"
+    alb.ingress.kubernetes.io/healthcheck-port: "traffic-port"
 spec:
   selector:
     app: worker
@@ -12,4 +13,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
-  type: LoadBalancer
+  type: ClusterIP
