@@ -4,17 +4,19 @@ metadata:
   name: ingress
   namespace: default
   annotations:
-    alb.ingress.kubernetes.io/backend-protocol: HTTP
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+    alb.ingress.kubernetes.io/backend-protocol: HTTPS
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/healthcheck-path: "/reflect"
     alb.ingress.kubernetes.io/healthcheck-port: "traffic-port"
+    alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:ap-northeast-2:586448081647:certificate/7870bdeb-2f53-4c30-b303-5b38c8505121"
     alb.ingress.kubernetes.io/success-codes: "200-399"
 spec:
   ingressClassName: alb
   rules:
-    - http:
+    - host: joker-worker-eks.pt.jobis.co
+      http:
         paths:
           - path: /
             pathType: Prefix
@@ -22,4 +24,4 @@ spec:
               service:
                 name: worker-service
                 port:
-                  number: 80
+                  number: 443
