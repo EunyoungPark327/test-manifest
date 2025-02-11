@@ -15,7 +15,6 @@ spec:
       labels:
         app: worker
       annotations:
-        vpc.amazonaws.com/pod-eni: "true"
         k8s.amazonaws.com/eniConfig: "public"
     spec:
       serviceAccountName: worker-sa
