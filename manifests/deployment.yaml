@@ -23,7 +23,6 @@ spec:
           image: 586448081647.dkr.ecr.ap-northeast-2.amazonaws.com/com-apne2-ec2-worker-ecr-pt:latest
           ports:
             - containerPort: 9401
-          networkMode: awsvpc
           resources:
             requests:
               cpu: "1"
