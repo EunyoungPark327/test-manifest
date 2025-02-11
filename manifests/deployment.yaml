@@ -16,6 +16,7 @@ spec:
         app: worker
       annotations:
         k8s.amazonaws.com/eniConfig: "public"
+        vpc.amazonaws.com/pod-ips: "true"
     spec:
       serviceAccountName: worker-sa
       containers:
